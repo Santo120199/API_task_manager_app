@@ -76,13 +76,20 @@
            
             $stmt->execute();
 
-            if($stmt->rowCount()>0){
-                return true;
-            }else {
+            $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            if($row == null){
                 return false;
             }
-            
 
+            //set property
+            $this->id = $row['id'];
+            $this->username = $row['username'];
+            $this->email = $row['email'];
+            return true;
+
+            
+            
         }
 
         function isAlreadyExist(){

@@ -24,24 +24,30 @@
     $user->email = $data->email;
     $user->password = md5($data->password);
 
+    $result = $user->login();
 
-
-    if($user->login()){
-       echo json_encode(
-           array(
-               "status"=>200,
-               "message"=>"Successfully Login!",
-               "email"=>$user->email,
-           )
-       );
-    }else{
+    if($result){
+        $user_arr = array(
+            'id'=>$user->id,
+            'username'=>$user->username,
+            'email'=>$user->email,
+        );
+        print_r(json_encode($user_arr));
+    }else {
         echo json_encode(
             array(
-                "status" => 401,
-                "message" => "Invalid Username or Password"
+                'status'=>401,
+                'message'=>'Invalid Credentials'
             )
         );
     }
+
+   
+
+    
+
+    
+    
 
 
     
