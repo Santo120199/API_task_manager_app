@@ -13,6 +13,7 @@
         public $startTime;
         public $endTime;
         public $remind;
+        public $userId;
 
 
         //constructor with db
@@ -23,10 +24,16 @@
         //Get Tasks
         public function read(){
             //Create query
-            $query = 'SELECT * FROM '.$this->table.'';
+            $query = 'SELECT * FROM '.$this->table.'
+            WHERE 
+                userId = ? 
+            ';
 
             //prepare statment
             $stmt = $this->conn->prepare($query);
+
+            //Bind userId
+            $stmt->bindParam(1,$this->userId);
 
             //execute query
             $stmt->execute();
@@ -75,7 +82,8 @@
                 date = :date,
                 startTime = :startTime,
                 endTime = :endTime,
-                remind = :remind
+                remind = :remind,
+                userId = :userId
             ';
 
             //prepare statment
@@ -89,7 +97,7 @@
             $this->startTime = htmlspecialchars(strip_tags($this->startTime));
             $this->endTime = htmlspecialchars(strip_tags($this->endTime));
             $this->remind = htmlspecialchars(strip_tags($this->remind));
-          
+            $this->userId = htmlspecialchars(strip_tags($this->userId));
 
 
             //Bind param
@@ -100,6 +108,7 @@
             $stmt->bindParam(':startTime', $this->startTime);
             $stmt->bindParam(':endTime', $this->endTime);
             $stmt->bindParam(':remind', $this->remind);
+            $stmt->bindParam(':userId',$this->userId);
 
 
             //execute query

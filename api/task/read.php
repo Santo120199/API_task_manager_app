@@ -14,6 +14,11 @@
     //Instance of task object
     $task = new Task($db);
 
+    //get data posted
+    $data = json_decode(file_get_contents("php://input"));
+    
+    $task->userId = $data->userId;
+
     //task query
     $result = $task->read();
 

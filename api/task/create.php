@@ -28,6 +28,7 @@
     $task->startTime = $data->startTime;
     $task->endTime = $data->endTime;
     $task->remind = $data->remind;
+    $task->userId = $data->userId;
     
 
     //Create task
