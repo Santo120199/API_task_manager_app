@@ -29,6 +29,7 @@
     $task->endTime = $data->endTime;
     $task->remind = $data->remind;
     $task->userId = $data->userId;
+    $task->color = $data->color;
     
 
     //Create task

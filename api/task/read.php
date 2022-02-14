@@ -44,6 +44,7 @@
                 'startTime' => $startTime,
                 'endTime' => $endTime,
                 'remind' => $remind,
+                'color' => $color,
             );
 
             //push to "data"

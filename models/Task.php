@@ -14,6 +14,7 @@
         public $endTime;
         public $remind;
         public $userId;
+        public $color;
 
 
         //constructor with db
@@ -83,7 +84,8 @@
                 startTime = :startTime,
                 endTime = :endTime,
                 remind = :remind,
-                userId = :userId
+                userId = :userId,
+                color = :color
             ';
 
             //prepare statment
@@ -98,6 +100,7 @@
             $this->endTime = htmlspecialchars(strip_tags($this->endTime));
             $this->remind = htmlspecialchars(strip_tags($this->remind));
             $this->userId = htmlspecialchars(strip_tags($this->userId));
+            $this->color = htmlspecialchars(strip_tags($this->color));
 
 
             //Bind param
@@ -109,6 +112,7 @@
             $stmt->bindParam(':endTime', $this->endTime);
             $stmt->bindParam(':remind', $this->remind);
             $stmt->bindParam(':userId',$this->userId);
+            $stmt->bindParam(':color',$this->color);
 
 
             //execute query
