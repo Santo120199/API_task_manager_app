@@ -19,6 +19,9 @@
 
     $team->name = $data->name;
     $team->createdBy = $data->createdBy;
+    $team->users = $data->users;
+    
+
 
     //Create Team
     if($team->createTeam()){

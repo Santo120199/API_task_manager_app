@@ -7,6 +7,7 @@
         //Team properties
         public $name;
         public $createdBy;
+        public $users;
 
         //consturct with db
         public function __construct($db){
@@ -19,6 +20,7 @@
             $query = 'INSERT INTO '.$this->table .'
             SET 
                 name = :name,
+                users = :users,
                 createdBy = :createdBy
             ';
 
@@ -28,10 +30,12 @@
             //clean data
             $this->name = htmlspecialchars(strip_tags($this->name));
             $this->createdBy = htmlspecialchars(strip_tags($this->createdBy));
+            
 
             //Bind Param
             $stmt->bindParam(':name',$this->name);
             $stmt->bindParam(':createdBy',$this->createdBy);
+            $stmt->bindParam(':users',$this->users);
 
             //execute query
             if($stmt->execute()){

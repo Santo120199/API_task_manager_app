@@ -38,6 +38,7 @@
                 'id' => $id,
                 'name' => $name,
                 'createdBy' => $createdBy,
+                'users'=> $users
             );
             //push to "data"
             array_push($team_arr['data'],$team_item);

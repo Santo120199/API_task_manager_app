@@ -87,9 +87,6 @@
             $this->username = $row['username'];
             $this->email = $row['email'];
             return true;
-
-            
-            
         }
 
         function isAlreadyExist(){
@@ -115,7 +112,25 @@
             }
         }
 
+        function readUser(){
+            //create query
+            $query = 'SELECT * FROM '.$this->table. '
+            WHERE 
+                id != ?
+            ';
 
+            //prepare statment
+            $stmt = $this->conn->prepare($query);
+
+            //Bind Userid
+            $stmt->bindParam(1,$this->id);
+
+            //execute query
+            $stmt->execute();
+
+            return $stmt;
+
+        }
     }
 
 
