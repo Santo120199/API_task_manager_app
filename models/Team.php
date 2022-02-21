@@ -42,6 +42,28 @@
         }
 
 
+        //Read Team per user
+        public function readTeam(){
+            //query
+            $query = 'SELECT * FROM '.$this->table .'
+            WHERE 
+                createdBy = ?
+            ';
+
+            //preapre statment
+            $stmt = $this->conn->prepare($query);
+
+            //Bind UserId
+            $stmt->bindParam(1,$this->createdBy);
+
+            //execute query
+            $stmt->execute();
+
+            return $stmt;
+
+        }
+
+
 
 
     }
